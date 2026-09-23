@@ -88,3 +88,30 @@ def get_counts(state_vector, num_shots, rng=None):
     """Measure `num_shots` times and return {bitstring: occurrences} for outcomes that occurred."""
     rng = rng or np.random.default_rng()
     return dict(Counter(measure_all(state_vector, rng) for _ in range(num_shots)))
+
+
+def ket(bits):
+    """Dirac ket for a bitstring, e.g. '01' -> '|01>'."""
+    return f"|{bits}>"
+
+
+def bra(bits):
+    """Dirac bra for a bitstring, e.g. '01' -> '<01|'."""
+    return f"<{bits}|"
+
+
+def format_state(state_vector, precision=3):
+    """Write a state vector in ket notation, e.g. '0.707|00> + 0.707|11>'."""
+    total_qubits = int(np.log2(len(state_vector)))
+    terms = []
+    for index, amp in enumerate(np.round(state_vector, precision)):
+        if amp == 0:
+            continue
+        if amp.imag == 0:
+            coeff = {1: "", -1: "-"}.get(amp.real, f"{amp.real:g}")
+        elif amp.real == 0:
+            coeff = f"{amp.imag:g}i"
+        else:
+            coeff = f"({amp.real:g}{amp.imag:+g}i)"
+        terms.append((_bitstring(index, total_qubits), coeff))
+    return " + ".join(f"{coeff}{ket(bits)}" for bits, coeff in sorted(terms)).replace("+ -", "- ")

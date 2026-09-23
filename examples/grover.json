@@ -1,0 +1,18 @@
+{
+  "name": "Grover search (2 qubits)",
+  "description": "One Grover iteration finds the marked item |11> among 4 with certainty. The oracle is CZ; the diffuser is H X CZ X H.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "CZ", "target": [1, 2]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "X", "target": [1]},
+    {"gate": "X", "target": [2]},
+    {"gate": "CZ", "target": [1, 2]},
+    {"gate": "X", "target": [1]},
+    {"gate": "X", "target": [2]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]}
+  ]
+}
