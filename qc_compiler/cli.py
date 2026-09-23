@@ -6,7 +6,7 @@ import sys
 
 import numpy as np
 
-from .simulator import get_counts, get_ground_state, run_program
+from .simulator import format_state, get_counts, get_ground_state, ket, run_program
 
 
 def parse_gate(spec):
@@ -24,7 +24,9 @@ def build_parser():
         description="Simulate a quantum circuit and print measurement counts.",
         epilog="Example: qc-compiler -g H:1 -g CX:1,2 --shots 1000",
     )
-    parser.add_argument("circuit", nargs="?", help="JSON file with a list of {gate, target} steps ('-' for stdin)")
+    parser.add_argument("circuit", nargs="?",
+                        help="JSON file with a list of {gate, target} steps, or an object with a "
+                             "'circuit' list plus optional 'name'/'description' ('-' for stdin)")
     parser.add_argument("-g", "--gate", action="append", type=parse_gate, default=[],
                         help="gate step as GATE:q or GATE:c,t; repeatable, appended after the circuit file")
     parser.add_argument("-n", "--qubits", type=int, help="number of qubits (default: highest qubit used)")
@@ -38,11 +40,15 @@ def main(argv=None):
     parser = build_parser()
     args = parser.parse_args(argv)
 
-    program = []
+    program, name = [], None
     if args.circuit:
         f = sys.stdin if args.circuit == "-" else open(args.circuit)
         with f:
-            program = json.load(f)
+            data = json.load(f)
+        if isinstance(data, dict):
+            program, name = data["circuit"], data.get("name")
+        else:
+            program = data
     program += args.gate
     if not program:
         parser.error("no circuit given; pass a JSON file or --gate steps")
@@ -54,9 +60,11 @@ def main(argv=None):
     except ValueError as e:
         parser.error(str(e))
 
+    if name:
+        print(name)
     if args.state:
-        print("state:", np.round(state, 6))
+        print("state:", format_state(state))
     counts = get_counts(state, args.shots, np.random.default_rng(args.seed))
     for bits, count in sorted(counts.items()):
-        print(f"{bits}  {count}")
+        print(f"{ket(bits)}  {count}")
     return 0

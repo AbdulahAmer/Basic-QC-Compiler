@@ -1,4 +1,8 @@
-[
-  { "gate": "H", "target": [1] },
-  { "gate": "CX", "target": [1, 2] }
-]
+{
+  "name": "Bell state |Φ+>",
+  "description": "H then CNOT entangles two qubits into (|00> + |11>)/√2. Only |00> and |11> are measured.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "CX", "target": [1, 2]}
+  ]
+}

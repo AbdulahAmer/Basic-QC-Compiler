@@ -1,0 +1,9 @@
+{
+  "name": "Uniform superposition",
+  "description": "H on every qubit gives all 8 basis states of 3 qubits equal probability.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "H", "target": [3]}
+  ]
+}

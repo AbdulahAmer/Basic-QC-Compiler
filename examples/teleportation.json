@@ -1,0 +1,13 @@
+{
+  "name": "Quantum teleportation",
+  "description": "Teleports |1> from qubit 1 to qubit 3. The classically controlled corrections are replaced by CX and CZ (deferred measurement). Qubit 3 always measures 1; qubits 1 and 2 are random.",
+  "circuit": [
+    {"gate": "X", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "CX", "target": [2, 3]},
+    {"gate": "CX", "target": [1, 2]},
+    {"gate": "H", "target": [1]},
+    {"gate": "CX", "target": [2, 3]},
+    {"gate": "CZ", "target": [1, 3]}
+  ]
+}

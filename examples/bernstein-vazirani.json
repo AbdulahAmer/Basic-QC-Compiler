@@ -1,0 +1,17 @@
+{
+  "name": "Bernstein-Vazirani",
+  "description": "Finds the hidden string s = 101 in a single oracle query. Qubits 1-3 read out s and ancilla qubit 4 ends in |1>: |1011>.",
+  "circuit": [
+    {"gate": "X", "target": [4]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "H", "target": [3]},
+    {"gate": "H", "target": [4]},
+    {"gate": "CX", "target": [1, 4]},
+    {"gate": "CX", "target": [3, 4]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "H", "target": [3]},
+    {"gate": "H", "target": [4]}
+  ]
+}
