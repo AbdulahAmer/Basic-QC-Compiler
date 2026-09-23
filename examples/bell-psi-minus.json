@@ -1,0 +1,10 @@
+{
+  "name": "Bell state |Ψ->",
+  "description": "The singlet state (|01> - |10>)/√2. The two qubits always measure opposite.",
+  "circuit": [
+    {"gate": "X", "target": [1]},
+    {"gate": "X", "target": [2]},
+    {"gate": "H", "target": [1]},
+    {"gate": "CX", "target": [1, 2]}
+  ]
+}

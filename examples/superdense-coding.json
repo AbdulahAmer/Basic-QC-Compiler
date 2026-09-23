@@ -1,0 +1,12 @@
+{
+  "name": "Superdense coding",
+  "description": "Alice and Bob share a Bell pair. Alice applies Z then X to her qubit to encode the two classical bits 11. Bob decodes with CNOT then H and measures |11>.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "CX", "target": [1, 2]},
+    {"gate": "X", "target": [1]},
+    {"gate": "Z", "target": [1]},
+    {"gate": "CX", "target": [1, 2]},
+    {"gate": "H", "target": [1]}
+  ]
+}

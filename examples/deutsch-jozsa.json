@@ -1,0 +1,15 @@
+{
+  "name": "Deutsch-Jozsa",
+  "description": "Two input qubits plus ancilla qubit 3, with the balanced oracle f(x) = x1 XOR x2. One query is enough: any input qubit measured as 1 means f is balanced. Result: |111>.",
+  "circuit": [
+    {"gate": "X", "target": [3]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "H", "target": [3]},
+    {"gate": "CX", "target": [1, 3]},
+    {"gate": "CX", "target": [2, 3]},
+    {"gate": "H", "target": [1]},
+    {"gate": "H", "target": [2]},
+    {"gate": "H", "target": [3]}
+  ]
+}

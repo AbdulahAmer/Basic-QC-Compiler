@@ -1,0 +1,9 @@
+{
+  "name": "GHZ state",
+  "description": "The Greenberger-Horne-Zeilinger state (|000> + |111>)/√2, entangling three qubits.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "CX", "target": [1, 2]},
+    {"gate": "CX", "target": [2, 3]}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "SWAP from three CNOTs",
+  "description": "Starting from |10>, three alternating CNOTs swap the qubits, giving |01>.",
+  "circuit": [
+    {"gate": "X", "target": [1]},
+    {"gate": "CX", "target": [1, 2]},
+    {"gate": "CX", "target": [2, 1]},
+    {"gate": "CX", "target": [1, 2]}
+  ]
+}

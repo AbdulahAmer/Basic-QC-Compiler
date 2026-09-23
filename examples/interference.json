@@ -1,0 +1,9 @@
+{
+  "name": "Single-qubit interference",
+  "description": "H Z H = X: the two paths through the phase flip cancel on |0> and add on |1>, so the result is always |1>.",
+  "circuit": [
+    {"gate": "H", "target": [1]},
+    {"gate": "Z", "target": [1]},
+    {"gate": "H", "target": [1]}
+  ]
+}
