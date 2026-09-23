@@ -1,0 +1,4 @@
+[
+  { "gate": "H", "target": [1] },
+  { "gate": "CX", "target": [1, 2] }
+]
