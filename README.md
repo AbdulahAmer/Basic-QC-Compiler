@@ -66,3 +66,14 @@ get_counts(state, 1000)  # {'00': 507, '11': 493}
 format_state(state)      # '0.707|00> + 0.707|11>'
 ket("10"), bra("10")     # ('|10>', '<10|')
 ```
+
+## License
+
+Copyright 2021-2026 Abdulah Amer.
+
+This repository uses separate licenses for software and educational content:
+
+- **Source code**, including the Python package, circuit examples, and code cells in `QOSF spring attempt-deprecated-2021-02-14.ipynb`, is licensed under the [Apache License 2.0](LICENSE).
+- **Educational content**, including README prose, notebook explanations, figures, and other non-code educational material, is licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](LICENSE-CONTENT).
+
+These licenses apply to the project's original material, including the archived notebook, unless otherwise noted. Third-party material and dependencies retain their respective licenses.
